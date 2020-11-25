@@ -98,12 +98,27 @@ FROM
 WHERE d.dept_no IN ('d007','d005');
 
 SELECT * FROM departments
---In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+
+--In descending order, list the frequency count of employee last names, i.e., 
+--how many employees share each last name.
+SELECT 
+	COUNT(last_name),
+	last_name
+FROM
+	employees
+GROUP BY last_name
+ORDER BY last_name DESC;
 
 /*Bonus (Optional)
-As you examine the data, you are overcome with a creeping suspicion that the dataset is fake. You surmise that your boss handed you spurious data in order to test the data engineering skills of a new employee. To confirm your hunch, you decide to take the following steps to generate a visualization of the data, with which you will confront your boss:
+As you examine the data, you are overcome with a creeping suspicion that the dataset is fake. 
+You surmise that your boss handed you spurious data in order to test the data engineering skills of a 
+new employee. To confirm your hunch, you decide to take the following steps to generate a visualization 
+of the data, with which you will confront your boss:
 
-Import the SQL database into Pandas. (Yes, you could read the CSVs directly in Pandas, but you are, after all, trying to prove your technical mettle.) This step may require some research. Feel free to use the code below to get started. Be sure to make any necessary modifications for your username, password, host, port, and database name:
+Import the SQL database into Pandas. (Yes, you could read the CSVs directly in Pandas, but you are, after 
+all, trying to prove your technical mettle.) This step may require some research. 
+Feel free to use the code below to get started. Be sure to make any necessary modifications for your 
+username, password, host, port, and database name:
 
 from sqlalchemy import create_engine
 engine = create_engine('postgresql://localhost:5432/<your_db_name>')
