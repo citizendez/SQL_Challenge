@@ -127,11 +127,32 @@ Consult SQLAlchemy documentation for more information.
 
 If using a password, do not upload your password to your GitHub repository. See https://www.youtube.com/watch?v=2uaTPmNvH0I and https://help.github.com/en/github/using-git/ignoring-files for more information.
 
-Create a histogram to visualize the most common salary ranges for employees.
+Create a histogram to visualize the most common salary ranges for employees.*/
+DROP VIEW IF EXISTS employee_salaries;
+CREATE VIEW employee_salaries AS
+SELECT
+	salary
+FROM salaries;
 
-Create a bar chart of average salary by title.
+-- SELECT salary FROM salaries;
+--Create a bar chart of average salary by title.
+DROP VIEW IF EXISTS salary_title;
+CREATE VIEW salary_title AS
+SELECT
+	t.title,
+	AVG(s.salary) as Avg_Salary
+FROM 
+	employees e
+	INNER JOIN titles t
+	ON e.emp_title_id = t.title_id
+	INNER JOIN salaries s
+	ON s.emp_no = e.emp_no
+GROUP BY t.title;
 
-Epilogue
+SELECT * FROM salary_title;
+
+
+/*Epilogue
 Evidence in hand, you march into your boss's office and present the visualization. With a sly grin, your boss thanks you for your work. On your way out of the office, you hear the words, "Search your ID number." You look down at your badge to see that your employee ID number is 499942.
 
 Submission
