@@ -23,3 +23,9 @@ FROM
 GROUP BY t.title;
 
 SELECT * FROM salary_title;
+
+/*Epilogue
+employee ID number is 499942.*/
+SELECT *
+FROM employees
+WHERE emp_no = 499942;
