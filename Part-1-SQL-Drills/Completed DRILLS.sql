@@ -1,16 +1,16 @@
 /*
-DRILL 1 SQL JOINS
-PART 1
 ** Describe the different types of join clauses supported in SQL
-INNER JOIN: for each row an inner joinc compares the primary key coulumn 
-to forign key column  and takes only matching values
+
+INNER JOIN: for each row an inner join takes only matching values based on the joined columns
 
 LEFT JOIN: returns all the records from left table and takes matched records
-from right
+from right, and umatched will be null
 
-RIGT JOIN: returns all the records from right talbe and takes matched records
+RIGHT JOIN: returns all the records from right table and takes matched records
 from the left.
 
+FULL OUTER JOIN: returns records that don't match, or to say it another way, this is used when neither 
+table has matching values
 
 PART 2
 ANSWER is they used a left joint to combine tables
@@ -132,9 +132,16 @@ SELECT yarn_name, vendor_id, COUNT(*)
 FROM yarn_table
 GROUP BY yarn_name, vendor_id HAVING COUNT (* )> 1;
 
-/*
-DRILL 5 GROUPBY
-SELECT state, AVERAGE(duration)
-FROM ufo_by_state
-GROUP BY state
+/*DRILL 5 GROUPBY
+-The below are a pandas data frame preview and a query for the total duration 
+(in seconds) of UFO sightings by state, respectively.
+-What is an equivalent SQL query? Instead of the sum, find the mean duration by state.*/
 
+
+--ANSWER: if i had access to the database this is the query I would have run to run an equivialant SQL query 
+--fo find the mean duration by state.
+SELECT 
+	state,
+	AVG(duration)
+FROM ufo_by_state
+GROUP BY state;
